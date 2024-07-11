@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voronoi Diagram based Hexagonal Map Generator</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+        padding-top: 20px;
+      }
+      h1 {
+        margin: 0;
+        font-size: 24px;
+        color: #333;
+      }
+      p {
+        font-size: 16px;
+        color: #666;
+        text-align: center;
+        max-width: 800px;
+        margin: 10px 0 20px;
+      }
+      canvas {
+        border: 1px solid #000;
+      }
+      .controls {
+        margin-bottom: 20px;
+      }
+      .slider-container,
+      .checkbox-container {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+      }
+      .slider-label,
+      .checkbox-label {
+        margin-right: 10px;
+      }
+      input[type="range"] {
+        width: 200px;
+      }
+      .scale-btn {
+        margin-left: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Voronoi Diagram based Hexagonal Map Generator</h1>
+    <p>
+      Welcome to the Hexagonal Map Generator based on Voronoi diagrams. This
+      tool allows you to generate and customize hexagonal maps using various
+      parameters. Adjust the sliders to see how the map changes in real-time!
+    </p>
+    <div class="controls">
+      <div class="slider-container">
+        <span class="slider-label">Scale Y:</span>
+        <input
+          type="range"
+          id="scaleSlider"
+          min="0.1"
+          max="1"
+          step="0.01"
+          value="0.31"
+        />
+        <span id="scaleValue">0.31</span>
+        <button class="scale-btn" data-value="0.31">0.31</button>
+        <button class="scale-btn" data-value="0.37">0.37</button>
+        <button class="scale-btn" data-value="1.0">1.0</button>
+      </div>
+      <div class="slider-container">
+        <span class="slider-label">Radius:</span>
+        <input
+          type="range"
+          id="radiusSlider"
+          min="10"
+          max="100"
+          step="1"
+          value="60"
+        />
+        <span id="radiusValue">60</span>
+      </div>
+      <div class="slider-container">
+        <span class="slider-label">Delta:</span>
+        <input
+          type="range"
+          id="deltaSlider"
+          min="0"
+          max="20"
+          step="1"
+          value="20"
+        />
+        <span id="deltaValue">20</span>
+      </div>
+      <div class="slider-container">
+        <span class="slider-label">Min Circumcenter Radius:</span>
+        <span id="minRedRadiusValue" style="color: red">24.23</span>
+      </div>
+      <div class="slider-container">
+        <span class="slider-label">Min Inscribed Radius:</span>
+        <span id="minBlueRadiusValue" style="color: blue">28.33</span>
+      </div>
+      <div class="checkbox-container">
+        <input type="checkbox" id="showCircumcenterCircles" />
+        <span class="checkbox-label">Show Circumcenter Circles</span>
+      </div>
+      <div class="checkbox-container">
+        <input type="checkbox" id="showInscribedCircles" />
+        <span class="checkbox-label">Show Inscribed Circles</span>
+      </div>
+      <div class="checkbox-container">
+        <input type="checkbox" id="showCenters" />
+        <span class="checkbox-label">Show Diagram Centers</span>
+      </div>
+    </div>
+    <canvas id="voronoiCanvas" width="800" height="600"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/voronoi@1.0.0/rhill-voronoi-core.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
